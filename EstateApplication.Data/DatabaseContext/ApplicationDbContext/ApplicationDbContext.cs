@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EstateApplication.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,5 +12,7 @@ namespace EstateApplication.Data.DatabaseContext.ApplicationDbContext
         {
 
         }
+        public DbSet<Property> Properties { get; set; }
+        public DbSet<Contact> Contact { get; set; }
     }
 }
