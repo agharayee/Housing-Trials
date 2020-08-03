@@ -43,7 +43,7 @@ namespace EstateApplication.Web
             }
             ));
 
-            services.AddIdentity<IdentityUser, IdentityRole<string>>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AuthenticationDbContext>().AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(option =>
