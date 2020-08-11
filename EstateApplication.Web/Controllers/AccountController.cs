@@ -32,13 +32,27 @@ namespace EstateApplication.Web.Controllers
             return LocalRedirect("~/");
         }
         [HttpPost]
-        public IActionResult Login(LoginModel model)
+        public async Task<IActionResult> Login(LoginModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
-            throw new NotImplementedException();
+            try
+            {
+                var result = await _siginManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+                if (!result.Succeeded)
+                {
+                    ModelState.AddModelError("", "Login failed, please check your details");
+                    return View();
+                }
+                return LocalRedirect("~/");
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return View();
+            }
         }
 
         [HttpGet]

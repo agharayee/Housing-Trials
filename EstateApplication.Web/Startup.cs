@@ -63,6 +63,7 @@ namespace EstateApplication.Web
 
             services.AddControllersWithViews();
             services.AddTransient<IAccountServices, AccountsServices>();
+            services.AddTransient<IPropertiesService, PropertiesServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
